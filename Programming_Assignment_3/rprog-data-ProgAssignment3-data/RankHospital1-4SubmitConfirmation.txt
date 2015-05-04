@@ -1,0 +1,220 @@
+https://class.coursera.org/rprog-013/assignment
+
+dinesh.mistry@j3dsolutions.com
+
+dJQh68Qpd9
+
+R version 3.1.2 (2014-10-31) -- "Pumpkin Helmet"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[Workspace loaded from ~/.RData]
+
+> setwd("~/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data")
+
+> submit()
+
+Press Enter to continue...
+
+| The first item I need is your Course ID. For example, if the homepage for your Coursera course was
+| 'https://class.coursera.org/rprog-001', then your course ID would be 'rprog-001' (without the quotes).
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission  password: dJQh68Qpd9
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 4
+Running test:
+rankhospital("NC", "heart attack", "worst")
+[1] "heart attack"
+[1] "NC"
+[1] "heart attack"
+[1] 11
+                               hospital state heartattack
+2926 CAROLINAS MEDICAL CENTER-NORTHEAST    NC        13.2
+3011             WAKEMED, CARY HOSPITAL    NC        13.3
+2965       DUKE HEALTH RALEIGH HOSPITAL    NC        13.5
+2948      IREDELL MEMORIAL HOSPITAL INC    NC        13.5
+2973     HUGH CHATHAM MEMORIAL HOSPITAL    NC        13.6
+3016  ASHEVILLE-OTEEN VA MEDICAL CENTER    NC        13.8
+                               hospital state heartattack
+2977          VIDANT EDGECOMBE HOSPITAL    NC        17.1
+2939  CLEVELAND REGIONAL MEDICAL CENTER    NC        17.3
+2989           DURHAM VA MEDICAL CENTER    NC        17.3
+3013 PRESBYTERIAN HOSPITAL HUNTERSVILLE    NC        17.6
+2966                 GRACE HOSPITAL INC    NC        18.4
+2931            WAYNE MEMORIAL HOSPITAL    NC        19.0
+Result:  Correct! 
+Warning messages:
+1: package ‘RCurl’ was built under R version 3.1.3 
+2: package ‘bitops’ was built under R version 3.1.3 
+3: package ‘digest’ was built under R version 3.1.3 
+4: package ‘stringr’ was built under R version 3.1.3 
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 5
+Running test:
+rankhospital("WA", "heart attack", 7)
+[1] "heart attack"
+[1] "WA"
+[1] "heart attack"
+[1] 11
+                                   hospital state heartattack
+4396 PROVIDENCE SACRED HEART MEDICAL CENTER    WA        13.1
+4380     SWEDISH MEDICAL CENTER/CHERRY HILL    WA        13.3
+4383   PEACEHEALTH ST JOSEPH MEDICAL CENTER    WA        13.4
+4369          VIRGINIA MASON MEDICAL CENTER    WA        13.4
+4389      PEACHEALTH ST JOHN MEDICAL CENTER    WA        13.6
+4390                     DEACONESS HOSPITAL    WA        13.8
+                              hospital state heartattack
+4404             VALLEY MEDICAL CENTER    WA        17.9
+4402 MULTICARE GOOD SAMARITAN HOSPITAL    WA        18.5
+4384   GRAYS HARBOR COMMUNITY HOSPITAL    WA        18.6
+4377     PROVIDENCE CENTRALIA HOSPITAL    WA        18.6
+4409 TACOMA GENERAL ALLENMORE HOSPITAL    WA        18.7
+4397    KADLEC REGIONAL MEDICAL CENTER    WA        19.1
+Result:  Correct! 
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 6
+Running test:
+rankhospital("WA", "pneumonia", 1000)
+[1] "pneumonia"
+[1] "WA"
+[1] "pneumonia"
+[1] 23
+                              hospital state pneumonia
+4408 EVERGREEN HOSPITAL MEDICAL CENTER    WA       8.7
+4415               ST ANTHONY HOSPITAL    WA       9.3
+4369     VIRGINIA MASON MEDICAL CENTER    WA       9.4
+4424     PROVIDENCE ST JOSEPH HOSPITAL    WA       9.8
+4384   GRAYS HARBOR COMMUNITY HOSPITAL    WA      10.0
+4429              OCEAN BEACH HOSPITAL    WA      10.0
+                                hospital state pneumonia
+4398             CASCADE VALLEY HOSPITAL    WA      15.0
+4405            ST JOSEPH MEDICAL CENTER    WA      15.0
+4440 WHITMAN HOSPITAL AND MEDICAL CENTER    WA      15.3
+4385                  SAMARITAN HOSPITAL    WA      15.4
+4412       ST FRANCIS COMMUNITY HOSPITAL    WA      15.8
+4400              OLYMPIC MEDICAL CENTER    WA      15.9
+Result:  Correct! 
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 7
+Running test:
+rankhospital("NY", "heart attak", 7)
+Result:  Correct! 

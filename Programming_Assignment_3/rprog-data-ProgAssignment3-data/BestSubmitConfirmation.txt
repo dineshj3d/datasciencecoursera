@@ -1,0 +1,579 @@
+> source("submitscript3.R")
+> submit()
+
+Press Enter to continue...
+
+| The first item I need is your Course ID. For example, if the homepage for your Coursera course was
+| 'https://class.coursera.org/rprog-001', then your course ID would be 'rprog-001' (without the quotes).
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission  password: dJQh68Qpd9
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 1
+Running test:
+best("SC", "heart attack")
+[1] "heart attack"
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning messages:
+1: package ‘RCurl’ was built under R version 3.1.3 
+2: package ‘bitops’ was built under R version 3.1.3 
+3: package ‘digest’ was built under R version 3.1.3 
+4: package ‘stringr’ was built under R version 3.1.3 
+5: In file(file, "rt") :
+  cannot open file 'C:/Users/dineshm/Documents/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv': No such file or directory
+> best <- function(arg1_state, arg2_outcome = "xx") {
++        ## assume argument are valid
++         
++         
++         
++         ## Read outcome data
++         ## Check that state and outcome are valid
++         ## Return hospital name in that state with lowest 30-day death
++         ## rate
++                 
++         ##
++         ## Step 1 - validate outcome arg
++         ##          assume arg2 is valid
++         arg2_outcome_valid <- TRUE
++         
++         if (arg2_outcome == 'heart attack') 
++                 {print (arg2_outcome)}
++         else
++                 if (arg2_outcome == 'heart failure') 
++                         {print (arg2_outcome)}
++                 else
++                 
++                         if (arg2_outcome == 'pneumonia') 
++                                 {print (arg2_outcome)}
++                         else
++                                  stop ('invalid outcome')
++         ##
++         ## Step 2 - validate State arg
++         ##
++         outcomeallDfr <- read.csv(file="C:/Users/Dinesh/Documents/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv"
++                                   , header=TRUE, sep=",",stringsAsFactors=FALSE)
++        
++         
++         ## get list of all States in data set
++         states_listDfr <- unique(subset(outcomeallDfr , select=c("State")))
++         ## check to see if state in list
++         ##          assume arg2 is valid
++         arg1_state_valid <- TRUE
++         
++         state_in_list <-  (states_listDfr$State == arg1_state)
++         
++         state_in_list_found <- any(state_in_list)
++         
++         if (state_in_list_found == TRUE)
++               print (arg1_state) 
++         else 
++                 stop ('invalid state!')
++         
++         ## Step 3 - main processing. assume arguments are valid
++         ## create data frame a given State e.g "NY" with associated outcomes
++         outcomesubDfr <- subset(xoutcomeallDfr,State == arg1_state, select = c(2,7,11,17,23))
++         ## rename data frame columns
++         names(outcomesubDfr) <- c("Hospital", "State", "HeartAttack", "HeartFailure", "Pneumonia")
++         
++         if (arg1_state_valid == TRUE & arg2_outcome_valid == TRUE) {
++                 ##print (arg1_state_valid)
++                 ##print (arg2_outcome_valid)
++                 ##head_outcomesubDfr <- head(outcomesubDfr)
++                 ##print (head_outcomesubDfr)
++                 if (arg2_outcome == 'heart attack') {
++                         print (arg2_outcome)
++                         outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$HeartAttack),]
++                         print (outcomesubNADfr$HeartAttack)
++                         print (min(outcomesubNADfr$HeartAttack))
++                         print (which.min(outcomesubNADfr$HeartAttack))
++                         ##print (class(outcomesubNADfr))
++                         return(outcomesubNADfr[which.min(outcomesubNADfr$HeartAttack),1])
++                         
++                 }
++                 else
++                         if (arg2_outcome == 'heart failure') {
++                                 print (arg2_outcome)
++                                 outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$HeartFailure),]
++                                 print (outcomesubNADfr$HeartFailure)
++                                 print (min(outcomesubNADfr$HeartFailure))
++                                 print (which.min(outcomesubNADfr$HeartFailure))
++                                 ##print (class(outcomesubNADfr))
++                                 return(outcomesubNADfr[which.min(outcomesubNADfr$HeartFailure),1])
++                         }
++                 else
++                         
++                         if (arg2_outcome == 'pneumonia') {
++                                 print (arg2_outcome)
++                                 outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$Pneumonia),]
++                                 print (outcomesubNADfr$Pneumonia)
++                                 print (min(outcomesubNADfr$Pneumonia))
++                                 print (which.min(outcomesubNADfr$Pneumonia))
++                                 ##print (class(outcomesubNADfr))
++                                 return(outcomesubNADfr[which.min(outcomesubNADfr$Pneumonia),1])
++                         }
++                 else
++                         stop ('invalid outcome')
++                 
++         }
++             
++ }
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 1
+Running test:
+best("SC", "heart attack")
+[1] "heart attack"
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'C:/Users/dineshm/Documents/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv': No such file or directory
+> source("submitscript3.R")
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 1
+Running test:
+best("SC", "heart attack")
+[1] "heart attack"
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'C:/Users/dineshm/Documents/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv': No such file or directory
+> best <- function(arg1_state, arg2_outcome = "xx") {
++        ## assume argument are valid
++         
++         
++         
++         ## Read outcome data
++         ## Check that state and outcome are valid
++         ## Return hospital name in that state with lowest 30-day death
++         ## rate
++                 
++         ##
++         ## Step 1 - validate outcome arg
++         ##          assume arg2 is valid
++         arg2_outcome_valid <- TRUE
++         
++         if (arg2_outcome == 'heart attack') 
++                 {print (arg2_outcome)}
++         else
++                 if (arg2_outcome == 'heart failure') 
++                         {print (arg2_outcome)}
++                 else
++                 
++                         if (arg2_outcome == 'pneumonia') 
++                                 {print (arg2_outcome)}
++                         else
++                                  stop ('invalid outcome')
++         ##
++         ## Step 2 - validate State arg
++         ##
++         outcomeallDfr <- read.csv(file="C:/Users/Dinesh/Documents/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv"
++                                   , header=TRUE, sep=",",stringsAsFactors=FALSE)
++        
++         
++         ## get list of all States in data set
++         states_listDfr <- unique(subset(outcomeallDfr , select=c("State")))
++         ## check to see if state in list
++         ##          assume arg2 is valid
++         arg1_state_valid <- TRUE
++         
++         state_in_list <-  (states_listDfr$State == arg1_state)
++         
++         state_in_list_found <- any(state_in_list)
++         
++         if (state_in_list_found == TRUE)
++               print (arg1_state) 
++         else 
++                 stop ('invalid state!')
++         
++         ## Step 3 - main processing. assume arguments are valid
++         ## create data frame a given State e.g "NY" with associated outcomes
++         outcomesubDfr <- subset(xoutcomeallDfr,State == arg1_state, select = c(2,7,11,17,23))
++         ## rename data frame columns
++         names(outcomesubDfr) <- c("Hospital", "State", "HeartAttack", "HeartFailure", "Pneumonia")
++         
++         if (arg1_state_valid == TRUE & arg2_outcome_valid == TRUE) {
++                 ##print (arg1_state_valid)
++                 ##print (arg2_outcome_valid)
++                 ##head_outcomesubDfr <- head(outcomesubDfr)
++                 ##print (head_outcomesubDfr)
++                 if (arg2_outcome == 'heart attack') {
++                         print (arg2_outcome)
++                         outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$HeartAttack),]
++                         print (outcomesubNADfr$HeartAttack)
++                         print (min(outcomesubNADfr$HeartAttack))
++                         print (which.min(outcomesubNADfr$HeartAttack))
++                         ##print (class(outcomesubNADfr))
++                         return(outcomesubNADfr[which.min(outcomesubNADfr$HeartAttack),1])
++                         
++                 }
++                 else
++                         if (arg2_outcome == 'heart failure') {
++                                 print (arg2_outcome)
++                                 outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$HeartFailure),]
++                                 print (outcomesubNADfr$HeartFailure)
++                                 print (min(outcomesubNADfr$HeartFailure))
++                                 print (which.min(outcomesubNADfr$HeartFailure))
++                                 ##print (class(outcomesubNADfr))
++                                 return(outcomesubNADfr[which.min(outcomesubNADfr$HeartFailure),1])
++                         }
++                 else
++                         
++                         if (arg2_outcome == 'pneumonia') {
++                                 print (arg2_outcome)
++                                 outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$Pneumonia),]
++                                 print (outcomesubNADfr$Pneumonia)
++                                 print (min(outcomesubNADfr$Pneumonia))
++                                 print (which.min(outcomesubNADfr$Pneumonia))
++                                 ##print (class(outcomesubNADfr))
++                                 return(outcomesubNADfr[which.min(outcomesubNADfr$Pneumonia),1])
++                         }
++                 else
++                         stop ('invalid outcome')
++                 
++         }
++             
++ }
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 1
+Running test:
+best("SC", "heart attack")
+[1] "heart attack"
+Error in file(file, "rt") : cannot open the connection
+In addition: Warning message:
+In file(file, "rt") :
+  cannot open file 'C:/Users/dineshm/Documents/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv': No such file or directory
+> best("SC", "heart attack")
+[1] "heart attack"
+[1] "SC"
+Error in subset(xoutcomeallDfr, State == arg1_state, select = c(2, 7,  : 
+  object 'xoutcomeallDfr' not found
+> best <- function(arg1_state, arg2_outcome = "xx") {
++        ## assume argument are valid
++         
++         
++         
++         ## Read outcome data
++         ## Check that state and outcome are valid
++         ## Return hospital name in that state with lowest 30-day death
++         ## rate
++                 
++         ##
++         ## Step 1 - validate outcome arg
++         ##          assume arg2 is valid
++         arg2_outcome_valid <- TRUE
++         
++         if (arg2_outcome == 'heart attack') 
++                 {print (arg2_outcome)}
++         else
++                 if (arg2_outcome == 'heart failure') 
++                         {print (arg2_outcome)}
++                 else
++                 
++                         if (arg2_outcome == 'pneumonia') 
++                                 {print (arg2_outcome)}
++                         else
++                                  stop ('invalid outcome')
++         ##
++         ## Step 2 - validate State arg
++         ##
++         outcomeallDfr <- read.csv(file="C:/Users/Dinesh/Documents/GitHub/datasciencecoursera/Programming_Assignment_3/rprog-data-ProgAssignment3-data/outcome-of-care-measures.csv"
++                                   , header=TRUE, sep=",",stringsAsFactors=FALSE)
++        
++         
++         ## get list of all States in data set
++         states_listDfr <- unique(subset(outcomeallDfr , select=c("State")))
++         ## check to see if state in list
++         ##          assume arg2 is valid
++         arg1_state_valid <- TRUE
++         
++         state_in_list <-  (states_listDfr$State == arg1_state)
++         
++         state_in_list_found <- any(state_in_list)
++         
++         if (state_in_list_found == TRUE)
++               print (arg1_state) 
++         else 
++                 stop ('invalid state!')
++         
++         ## Step 3 - main processing. assume arguments are valid
++         ## create data frame a given State e.g "NY" with associated outcomes
++         outcomesubDfr <- subset(outcomeallDfr,State == arg1_state, select = c(2,7,11,17,23))
++         ## rename data frame columns
++         names(outcomesubDfr) <- c("Hospital", "State", "HeartAttack", "HeartFailure", "Pneumonia")
++         
++         if (arg1_state_valid == TRUE & arg2_outcome_valid == TRUE) {
++                 ##print (arg1_state_valid)
++                 ##print (arg2_outcome_valid)
++                 ##head_outcomesubDfr <- head(outcomesubDfr)
++                 ##print (head_outcomesubDfr)
++                 if (arg2_outcome == 'heart attack') {
++                         print (arg2_outcome)
++                         outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$HeartAttack),]
++                         print (outcomesubNADfr$HeartAttack)
++                         print (min(outcomesubNADfr$HeartAttack))
++                         print (which.min(outcomesubNADfr$HeartAttack))
++                         ##print (class(outcomesubNADfr))
++                         return(outcomesubNADfr[which.min(outcomesubNADfr$HeartAttack),1])
++                         
++                 }
++                 else
++                         if (arg2_outcome == 'heart failure') {
++                                 print (arg2_outcome)
++                                 outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$HeartFailure),]
++                                 print (outcomesubNADfr$HeartFailure)
++                                 print (min(outcomesubNADfr$HeartFailure))
++                                 print (which.min(outcomesubNADfr$HeartFailure))
++                                 ##print (class(outcomesubNADfr))
++                                 return(outcomesubNADfr[which.min(outcomesubNADfr$HeartFailure),1])
++                         }
++                 else
++                         
++                         if (arg2_outcome == 'pneumonia') {
++                                 print (arg2_outcome)
++                                 outcomesubNADfr <- outcomesubDfr[-grep("Not Available",outcomesubDfr$Pneumonia),]
++                                 print (outcomesubNADfr$Pneumonia)
++                                 print (min(outcomesubNADfr$Pneumonia))
++                                 print (which.min(outcomesubNADfr$Pneumonia))
++                                 ##print (class(outcomesubNADfr))
++                                 return(outcomesubNADfr[which.min(outcomesubNADfr$Pneumonia),1])
++                         }
++                 else
++                         stop ('invalid outcome')
++                 
++         }
++             
++ }
+> best("SC", "heart attack")
+[1] "heart attack"
+[1] "SC"
+[1] "heart attack"
+ [1] "18.0" "12.9" "15.3" "14.5" "16.9" "16.4" "15.0" "17.1" "13.8" "16.1" "14.3" "16.4" "15.2" "15.1" "14.5" "14.8" "15.2" "14.6" "14.6" "17.3" "16.2"
+[22] "17.0" "15.6" "13.1" "15.8" "17.4" "14.6" "13.9" "14.1" "16.3" "17.3" "17.1" "16.7" "17.1" "15.9" "14.2" "15.3" "16.2" "17.9" "18.3" "16.1" "14.4"
+[1] "12.9"
+[1] 2
+[1] "MUSC MEDICAL CENTER"
+> submit()
+
+Press Enter to continue...1
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 1
+Running test:
+best("SC", "heart attack")
+[1] "heart attack"
+[1] "SC"
+[1] "heart attack"
+ [1] "18.0" "12.9" "15.3" "14.5" "16.9" "16.4" "15.0" "17.1" "13.8" "16.1" "14.3" "16.4" "15.2" "15.1" "14.5" "14.8" "15.2" "14.6" "14.6" "17.3" "16.2"
+[22] "17.0" "15.6" "13.1" "15.8" "17.4" "14.6" "13.9" "14.1" "16.3" "17.3" "17.1" "16.7" "17.1" "15.9" "14.2" "15.3" "16.2" "17.9" "18.3" "16.1" "14.4"
+[1] "12.9"
+[1] 2
+Result:  Correct! 
+> 2
+[1] 2
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 2
+Running test:
+best("NY", "pneumonia")
+[1] "pneumonia"
+[1] "NY"
+[1] "pneumonia"
+  [1] "10.3" "12.5" "12.2" "12.5" "10.9" "14.0" "10.5" "13.9" "10.0" "12.9" "11.9" "12.1" "9.2"  "14.9" "13.5" "13.6" "13.0" "11.4" "13.5" "12.0" "11.2"
+ [22] "10.9" "13.3" "10.9" "12.5" "13.0" "13.7" "9.2"  "13.5" "10.6" "14.4" "14.8" "10.1" "11.8" "12.2" "13.9" "9.5"  "10.9" "15.0" "13.1" "12.8" "12.2"
+ [43] "12.2" "11.1" "11.4" "14.2" "8.1"  "13.7" "10.8" "12.4" "10.4" "12.7" "11.3" "12.0" "16.0" "11.6" "11.7" "11.4" "11.5" "11.8" "11.4" "13.7" "14.8"
+ [64] "9.9"  "11.3" "10.1" "11.1" "13.4" "11.5" "12.8" "12.2" "10.5" "11.0" "12.7" "9.2"  "14.1" "14.1" "12.3" "11.2" "10.1" "12.0" "11.8" "11.5" "11.2"
+ [85] "10.8" "12.2" "10.0" "11.9" "10.4" "15.9" "7.4"  "12.4" "10.1" "10.5" "11.8" "12.4" "12.2" "10.3" "13.6" "13.9" "10.9" "9.8"  "9.4"  "12.4" "10.3"
+[106] "7.7"  "12.0" "13.5" "12.1" "10.9" "11.1" "15.7" "10.9" "12.3" "9.2"  "11.6" "10.8" "13.1" "11.5" "12.1" "11.7" "10.4" "9.9"  "11.9" "12.2" "12.0"
+[127] "10.5" "13.2" "15.4" "12.3" "11.1" "15.3" "12.3" "12.9" "11.9" "11.5" "10.8" "11.0" "9.9"  "13.3" "10.7" "12.1" "13.1" "12.6" "10.6" "10.0" "13.3"
+[148] "13.5" "10.9" "11.3" "10.3" "11.5" "11.8" "11.7" "10.8" "11.4" "11.6" "13.7" "11.2" "12.1" "12.2" "13.0" "13.1" "10.6" "11.0" "9.2"  "12.6" "13.6"
+[169] "11.4" "10.6" "11.1" "15.3" "11.5" "12.5" "12.3"
+[1] "10.0"
+[1] 91
+Result:  Correct! 
+> submit()
+
+Press Enter to continue...
+
+| Is the following information correct?
+
+Course ID: rprog-013
+Submission login (email): dinesh.mistry@j3dsolutions.com
+Submission password: dJQh68Qpd9
+
+1: Yes, go ahead!
+2: No, I need to change something.
+
+Selection: 1
+
+| Which part are you submitting?
+
+ 1: 'best' part 1
+ 2: 'best' part 2
+ 3: 'best' part 3
+ 4: 'rankhospital' part 1
+ 5: 'rankhospital' part 2
+ 6: 'rankhospital' part 3
+ 7: 'rankhospital' part 4
+ 8: 'rankall' part 1
+ 9: 'rankall' part 2
+10: 'rankall' part 3
+
+Selection: 3
+Running test:
+best("NN", "pneumonia")
+[1] "pneumonia"
+Result:  Correct! 

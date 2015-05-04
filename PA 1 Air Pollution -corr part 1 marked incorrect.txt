@@ -1,0 +1,33 @@
+I just submitted the assignment 1. Cannot figure out why 8 / 10	'corr' part 1 is marked incorrect? Below, my test results, matches exactly. The only difference I see is the rounding in summary (cr) which I don't think is something I can control in the function?
+
+Can some clarify what exactly is is the test for '8 / 10	'corr' part 1'?
+
+
+---test results
+> cr <- corr("specdata", 150)
+> head(cr)
+[1] -0.01896 -0.14051 -0.04390 -0.06816 -0.12351 -0.07589
+> summary(cr)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-0.21060 -0.05000  0.09462  0.12530  0.26840  0.76310 
+> cr <- corr("specdata", 400)
+> head(cr)
+[1] -0.01896 -0.04390 -0.06816 -0.07589  0.76313 -0.15783
+> summary(cr)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-0.17620 -0.03109  0.10020  0.13970  0.26850  0.76310 
+> cr <- corr("specdata", 5000)
+> head(cr)
+numeric(0)
+> summary(cr)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+                                                
+> length(cr)
+[1] 0
+> cr <- corr("specdata")
+> summary(cr)
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+-1.00000 -0.05282  0.10720  0.13680  0.27830  1.00000 
+> length(cr)
+[1] 323
+> 
